@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -8,6 +8,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
+import { AuthContext } from "../contexts/AuthContext";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -22,11 +23,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MenuAppBar() {
+const MenuAppBar = () => {
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const currentUser = useContext(AuthContext);
+  console.log(currentUser);
 
   const handleChange = (event) => {
     setAuth(event.target.checked);
@@ -94,4 +97,6 @@ export default function MenuAppBar() {
       </AppBar>
     </div>
   );
-}
+};
+
+export default MenuAppBar;
