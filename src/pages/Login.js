@@ -12,13 +12,13 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     SignIn(email, password, history);
-    history.push("/dashboard");
+    history.push("/");
   };
 
   const handleProvider = (e) => {
     e.preventDefault();
     SignUpProvider();
-    history.push("/dashboard");
+    history.push("/");
   };
   return (
     <div className="login">
@@ -46,7 +46,7 @@ const Login = () => {
       </form>
       <br />
       <br />
-      <Button variant="contained" color="primary" OnClick={handleLogin}>
+      <Button onClick={handleLogin} variant="contained" color="primary">
         Login
       </Button>
       <br />

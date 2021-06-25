@@ -10,6 +10,9 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import { AuthContext } from "../contexts/AuthContext";
 import { Link } from "react-router-dom";
+import { Button } from "@material-ui/core";
+import { SignOut } from "../helpers/Firebase";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,15 +28,10 @@ const useStyles = makeStyles((theme) => ({
 
 const MenuAppBar = () => {
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const currentUser = useContext(AuthContext);
-  console.log(currentUser);
-
-  const handleChange = (event) => {
-    setAuth(event.target.checked);
-  };
+  const history = useHistory();
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -41,6 +39,10 @@ const MenuAppBar = () => {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    SignOut(history);
   };
 
   return (
@@ -56,9 +58,11 @@ const MenuAppBar = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            <i>WELCOME TO PALA'S PALACE</i>
+            <i>
+              WELCOME TO PALA'S PALACE - {currentUser?.currentUser?.displayName}
+            </i>
           </Typography>
-          {auth && (
+          {
             <div>
               <IconButton
                 aria-label="account of current user"
@@ -69,6 +73,13 @@ const MenuAppBar = () => {
               >
                 <AccountCircle />
               </IconButton>
+              {currentUser?.currentUser?.displayName ? (
+                <Button onClick={handleLogout} style={{ color: "white" }}>
+                  Logout
+                </Button>
+              ) : (
+                ""
+              )}
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
@@ -84,15 +95,28 @@ const MenuAppBar = () => {
                 open={open}
                 onClose={handleClose}
               >
-                <Link to="/login">
-                  <MenuItem onClick={handleClose}>Login</MenuItem>
-                </Link>
-                <Link to="/register">
-                  <MenuItem onClick={handleClose}>Register</MenuItem>
-                </Link>
+                {currentUser?.currentUser?.displayName ? (
+                  <div>
+                    <Link to="/profile">
+                      <MenuItem onClick={handleClose}>Profile</MenuItem>
+                    </Link>
+                    <Link to="/upload">
+                      <MenuItem onClick={handleClose}>new Post</MenuItem>
+                    </Link>
+                  </div>
+                ) : (
+                  <div>
+                    <Link to="/login">
+                      <MenuItem onClick={handleClose}>Login</MenuItem>
+                    </Link>
+                    <Link to="/register">
+                      <MenuItem onClick={handleClose}>Register</MenuItem>
+                    </Link>
+                  </div>
+                )}
               </Menu>
             </div>
-          )}
+          }
         </Toolbar>
       </AppBar>
     </div>

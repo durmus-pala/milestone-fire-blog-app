@@ -10,18 +10,19 @@ const Register = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [photo, setPhoto] = useState("");
 
   const handleRegister = (e) => {
     e.preventDefault();
     const displayName = `${firstName} ${lastName}`;
-    createUser(email, password, displayName, history);
-    history.push("/dashboard");
+    createUser(email, password, displayName, photo, history);
+    history.push("/");
   };
 
   const handleProvider = (e) => {
     e.preventDefault();
     SignUpProvider();
-    history.push("/dashboard");
+    history.push("/");
   };
 
   return (
@@ -66,6 +67,16 @@ const Register = () => {
           variant="outlined"
           placeholder="Enter Your Password Please..."
           onChange={(e) => setPassword(e.target.value)}
+        />
+        <br />
+        <br />
+        <TextField
+          className="login-password"
+          type="text"
+          id="outlined-basic"
+          variant="outlined"
+          placeholder="Enter Your Photo URL here..."
+          onChange={(e) => setPhoto(e.target.value)}
         />
       </form>
       <br />
