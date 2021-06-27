@@ -1,6 +1,7 @@
 import { Button, TextField } from "@material-ui/core";
 import React, { useState } from "react";
 import blok from "../assets/blok.png";
+import google from "../assets/google.png";
 import { SignIn, SignUpProvider } from "../helpers/Firebase";
 import { useHistory } from "react-router-dom";
 
@@ -51,7 +52,18 @@ const Login = () => {
       </Button>
       <br />
       <br />
-      <Button onClick={handleProvider}>Continue With Google</Button>
+      <Button
+        onClick={handleProvider}
+        style={{
+          width: "70%",
+          display: "block",
+          textAlign: "center",
+          margin: "auto",
+        }}
+      >
+        <p>Continue With Google</p>
+        <img src={google} alt="google" style={{ width: "15%" }} />
+      </Button>
     </div>
   );
 };

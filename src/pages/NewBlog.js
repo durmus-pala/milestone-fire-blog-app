@@ -3,7 +3,6 @@ import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import React, { useState } from "react";
 import { addInfo } from "../helpers/Firebase";
 import { useHistory } from "react-router-dom";
-import { info } from "autoprefixer";
 
 const NewBlog = () => {
   const [title, setTitle] = useState("");
@@ -17,7 +16,7 @@ const NewBlog = () => {
       content: content,
       url: imageUrl,
     };
-    addInfo(info);
+    addInfo({ info });
     history.push("/");
   };
   return (
@@ -56,11 +55,7 @@ const NewBlog = () => {
         </form>
         <br />
         <br />
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={(e) => handleAddInfo(info)}
-        >
+        <Button variant="contained" color="primary" onClick={handleAddInfo}>
           Add Content
         </Button>
       </div>

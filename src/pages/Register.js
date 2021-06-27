@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { createUser, SignUpProvider } from "../helpers/Firebase";
 import blok from "../assets/blok.png";
+import google from "../assets/google.png";
 
 const Register = () => {
   const history = useHistory();
@@ -86,7 +87,18 @@ const Register = () => {
       </Button>
       <br />
       <br />
-      <Button onClick={handleProvider}>Continue With Google</Button>
+      <Button
+        onClick={handleProvider}
+        style={{
+          width: "70%",
+          display: "block",
+          textAlign: "center",
+          margin: "auto",
+        }}
+      >
+        <p>Continue With Google</p>
+        <img src={google} alt="google" style={{ width: "15%" }} />
+      </Button>
     </div>
   );
 };
