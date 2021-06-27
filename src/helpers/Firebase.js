@@ -11,6 +11,8 @@ const firebaseApp = firebase.initializeApp({
   storageBucket: "milestone-fire-blog-app.appspot.com",
   messagingSenderId: "137726194070",
   appId: "1:137726194070:web:5b64402a9066308b67adb7",
+  databaseURL:
+    "https://milestone-fire-blog-app-default-rtdb.europe-west1.firebasedatabase.app",
 });
 
 export const createUser = async (
