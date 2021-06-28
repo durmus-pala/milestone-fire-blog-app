@@ -9,7 +9,7 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(props) => {
-        if (currentUser.displayName) {
+        if (currentUser?.displayName) {
           return <Component {...props} />;
         } else {
           return (

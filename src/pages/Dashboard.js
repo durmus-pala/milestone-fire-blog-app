@@ -1,9 +1,11 @@
 import React from "react";
+import Post from "../components/Post";
 
 const Dashboard = () => {
   return (
     <div>
-      <h2>dashboard page</h2>
+      <h1 style={{ color: "Purple", fontFamily: "fantasy" }}>DASHBOARD</h1>
+      <Post />
     </div>
   );
 };

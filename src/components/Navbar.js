@@ -98,6 +98,9 @@ const MenuAppBar = () => {
                 {currentUser?.currentUser?.displayName ? (
                   <div>
                     <Link to="/profile">
+                      <Link to="/">
+                        <MenuItem onClick={handleClose}>Dashboard</MenuItem>
+                      </Link>
                       <MenuItem onClick={handleClose}>Profile</MenuItem>
                     </Link>
                     <Link to="/upload">
@@ -106,6 +109,9 @@ const MenuAppBar = () => {
                   </div>
                 ) : (
                   <div>
+                    <Link to="/">
+                      <MenuItem onClick={handleClose}>Dashboard</MenuItem>
+                    </Link>
                     <Link to="/login">
                       <MenuItem onClick={handleClose}>Login</MenuItem>
                     </Link>
