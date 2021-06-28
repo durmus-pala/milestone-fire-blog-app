@@ -15,6 +15,7 @@ import { useHistory } from "react-router-dom";
 
 const Post = () => {
   const { blogList, isLoading } = useFetch();
+  console.log(blogList);
   const currentUser = useContext(AuthContext);
   const history = useHistory();
   //console.log(currentUser.currentUser.uid);
@@ -27,13 +28,12 @@ const Post = () => {
     }
   };
 
-  const handleDetail = () => {
+  const handleDetail = (id) => {
     if (!currentUser?.currentUser?.uid) {
       alert("Please Login To See Details!!!");
     } else {
       history.push({
-        pathname: "/details",
-        blogList: blogList,
+        pathname: `/details/${id}`,
       });
     }
   };
@@ -52,7 +52,7 @@ const Post = () => {
               marginRight: "5%",
               overflowY: "auto",
             }}
-            onDoubleClick={handleDetail}
+            onDoubleClick={() => handleDetail(item.id)}
           >
             <CardHeader title={item.info.title} />
             <CardMedia

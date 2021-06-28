@@ -1,28 +1,31 @@
-import React, { useContext } from "react";
+import React from "react";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import { useFetch } from "../helpers/Firebase";
-import { AuthContext } from "../contexts/AuthContext";
 import { useParams } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import { useFetch } from "../helpers/Firebase";
 
-const Details = (props) => {
+const Details = () => {
+  const { id } = useParams();
   const { blogList, isLoading } = useFetch();
-  const currentUser = useContext(AuthContext);
-  const history = useHistory();
-  const blog = props.location;
-  // const id = useParams();
 
-  console.log("blog", blog);
+  function getOneBlog(id) {
+    const result = blogList?.filter((item) => item.id === id);
+    return result;
+  }
+
+  console.log(getOneBlog(id));
 
   return (
     <div>
+      {{isLoading ? (
+        <img src={loading} alt="loading" />
+      )}
       <Card>
         <CardHeader title="Shrimp and Chorizo Paella" />
-        <CardMedia image="/static/images/cards/paella.jpg" title="post image" />
+        <CardMedia image="" title="post image" />
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
             This impressive paella is a perfect party dish and a fun meal to
