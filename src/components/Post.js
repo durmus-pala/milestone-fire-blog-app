@@ -31,7 +31,10 @@ const Post = () => {
     if (!currentUser?.currentUser?.uid) {
       alert("Please Login To See Details!!!");
     } else {
-      history.push("/details");
+      history.push({
+        pathname: "/details",
+        blogList: blogList,
+      });
     }
   };
   return (
@@ -39,7 +42,7 @@ const Post = () => {
       {isLoading ? (
         <img src={loading} alt="loading" />
       ) : (
-        blogList.map((item, id) => (
+        blogList?.map((item, id) => (
           <Card
             key={id}
             style={{
@@ -49,7 +52,7 @@ const Post = () => {
               marginRight: "5%",
               overflowY: "auto",
             }}
-            onClick={handleDetail}
+            onDoubleClick={handleDetail}
           >
             <CardHeader title={item.info.title} />
             <CardMedia
