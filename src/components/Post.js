@@ -15,10 +15,8 @@ import { useHistory } from "react-router-dom";
 
 const Post = () => {
   const { blogList, isLoading } = useFetch();
-  console.log(blogList);
   const currentUser = useContext(AuthContext);
   const history = useHistory();
-  //console.log(currentUser.currentUser.uid);
 
   const changeColor = (e) => {
     if (e.target.style.color === "red") {

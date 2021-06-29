@@ -102,4 +102,14 @@ export const useFetch = () => {
   return { blogList, isLoading };
 };
 
+export const deleteHandler = (id) => {
+  const blogRef = firebase.database().ref("blog").child(id);
+  blogRef.remove();
+};
+
+export const updateHandler = (info) => {
+  const updateBlogRef = firebase.database().ref("blog").child(info.id);
+  updateBlogRef.update(info);
+};
+
 export default firebaseApp;
