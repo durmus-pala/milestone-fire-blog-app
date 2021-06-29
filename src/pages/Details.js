@@ -15,12 +15,10 @@ const Details = () => {
   const { blogList, isLoading } = useFetch();
   const history = useHistory();
 
-  function getOneBlog(id) {
+  const getOneBlog = (id) => {
     const result = blogList?.filter((item) => item.id === id);
     return result;
-  }
-
-  getOneBlog(id);
+  };
 
   const detailedPost = getOneBlog(id);
 
@@ -32,6 +30,7 @@ const Details = () => {
   const handleUpdate = (id) => {
     history.push({
       pathname: `/edit/${id}`,
+      blog: detailedPost,
     });
   };
 
