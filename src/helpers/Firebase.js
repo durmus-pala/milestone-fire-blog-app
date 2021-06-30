@@ -6,8 +6,7 @@ import "firebase/firestore";
 
 const firebaseApp = firebase.initializeApp({
   apiKey: "AIzaSyBwkPKfnKESFcHWF9bmVV7IydqnpN2ddLU",
-  authDomain:
-    "milestone-fire-blog-app.firebaseapp.com, https://firebase-milestone-blog-app.herokuapp.com/",
+  authDomain: "https://firebase-milestone-blog-app.herokuapp.com/",
   projectId: "milestone-fire-blog-app",
   storageBucket: "milestone-fire-blog-app.appspot.com",
   messagingSenderId: "137726194070",
