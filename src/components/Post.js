@@ -48,6 +48,7 @@ const Post = () => {
               height: "20rem",
               display: "inline-block",
               marginRight: "5%",
+              marginBottom: "5%",
               overflowY: "auto",
             }}
             onDoubleClick={() => handleDetail(item.id)}

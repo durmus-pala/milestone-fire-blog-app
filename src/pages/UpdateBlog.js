@@ -6,11 +6,10 @@ import { useHistory } from "react-router-dom";
 
 const UpdateBlog = (props) => {
   const detailedPost = props.location.blog;
-  console.log("Locationdan gelen", detailedPost);
 
-  const [title, setTitle] = useState(detailedPost?.info?.title);
-  const [imageUrl, setImageUrl] = useState(detailedPost?.info?.url);
-  const [content, setContent] = useState(detailedPost?.info?.content);
+  const [title, setTitle] = useState(detailedPost[0]?.info?.title);
+  const [imageUrl, setImageUrl] = useState(detailedPost[0]?.info?.url);
+  const [content, setContent] = useState(detailedPost[0]?.info?.content);
   const history = useHistory();
 
   const handleUpdateInfo = (post) => {

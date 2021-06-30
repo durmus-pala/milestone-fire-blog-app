@@ -29,6 +29,7 @@ const Register = () => {
   return (
     <div className="login">
       <img src={blok} alt="login" className="login-img" />
+
       <form noValidate autoComplete="off">
         <br></br>
         <TextField
